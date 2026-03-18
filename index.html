@@ -42,26 +42,23 @@
 
         @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0); } }
         .ui-float { animation: float 6s ease-in-out infinite; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- UI NAVBAR -->
+    <!-- UI NAVBAR (Functional Links) -->
     <nav class="fixed top-0 w-full z-50 ui-nav h-16 flex items-center px-8">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <div class="flex items-center space-x-12">
-                <div class="flex items-center space-x-2">
+                <a href="index.html" class="flex items-center space-x-2">
                     <div class="w-6 h-6 bg-blue-600 rounded-sm flex items-center justify-center text-[10px] text-white font-bold tracking-tighter uppercase">CS</div>
                     <span class="text-sm font-bold tracking-tight text-black uppercase">COLD SENSE</span>
-                </div>
+                </a>
                 <div class="hidden lg:flex space-x-10 text-[11px] font-bold text-slate-500 uppercase tracking-widest">
-                    <a href="#home" class="hover:text-black transition">Sistema</a>
-                    <a href="#marquesina-sensores" class="hover:text-black transition">Sensores</a>
-                    <a href="#contacto" class="hover:text-black transition">Soporte</a>
+                    <a href="sistema.html" class="hover:text-black transition">Sistema</a>
+                    <a href="sensores.html" class="hover:text-black transition">Sensores</a>
+                    <a href="software.html" class="hover:text-black transition">Software</a>
+                    <a href="pricing.html" class="hover:text-black transition">Precios</a>
                 </div>
             </div>
             <a href="https://wa.me/59899185402" class="btn-ui btn-blue px-6 py-2.5 text-xs font-bold uppercase tracking-widest">Demo</a>
@@ -71,15 +68,12 @@
     <!-- HERO SECTION -->
     <header id="home" class="min-h-screen flex items-center pt-24 px-8 hero-banner relative">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
-            
-            <!-- Left Side -->
             <div>
                 <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.3em] mb-4 block italic">Professional Monitoring</span>
                 <h1 class="hero-title mb-10 text-[#1d1d1f] uppercase">
                     Monitorea temperatura online <br> 
                     <span class="text-blue-600 italic">desde US$ 10 por mes.</span>
                 </h1>
-                
                 <div class="space-y-4 mb-12">
                     <div class="flex items-center text-sm font-bold text-slate-600">
                         <i class="fas fa-check-circle checkmark"></i> Sensores IoT Online 24/7
@@ -91,19 +85,16 @@
                         <i class="fas fa-check-circle checkmark"></i> Dashboard Industrial Unificado
                     </div>
                 </div>
-
                 <div class="flex flex-col sm:flex-row gap-6">
-                    <a href="https://wa.me/59899185402" class="btn-ui btn-blue">Hablar con Enlace</a>
-                    <a href="#marquesina-sensores" class="btn-ui btn-outline">Explorar Sensores</a>
+                    <a href="pricing.html" class="btn-ui btn-blue">Conoce los planes</a>
+                    <a href="sensores.html" class="btn-ui btn-outline">Explorar Sensores</a>
                 </div>
             </div>
-
-            <!-- Right Side (Product Visual) -->
             <div class="relative ui-float">
                 <div class="bg-white rounded-[40px] p-8 shadow-2xl border border-slate-100 relative">
                      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" class="w-full h-[350px] object-cover rounded-[30px]" alt="Sensor Node">
                      <div class="absolute top-12 left-12 bg-white/95 backdrop-blur-md p-4 rounded-xl border border-slate-100 shadow-xl">
-                        <div class="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest">Cam_MVD_04</div>
+                        <div class="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-widest italic">Node 481-B</div>
                         <div class="text-3xl font-bold text-blue-600 tracking-tighter">-22.4°C</div>
                      </div>
                 </div>
@@ -111,25 +102,24 @@
         </div>
     </header>
 
-    <!-- CLIENT MARQUEE (Ticker) -->
+    <!-- CLIENT MARQUEE -->
     <div class="py-20 border-y border-slate-100 marquee-container bg-slate-50">
         <div class="marquee-wrapper">
             <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter">GRUPO DISCO</div>
-            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter italic">CONAPROLE</div>
-            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter underline">TIENDA INGLESA</div>
+            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter italic italic">CONAPROLE</div>
+            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter underline underline">TIENDA INGLESA</div>
             <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter">F. MODELO</div>
-            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter italic">TUCUAREMBO</div>
-            <!-- Duplicate -->
+            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter">TUCUAREMBO</div>
+            <!-- Duplicates -->
             <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter">GRUPO DISCO</div>
-            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter italic">CONAPROLE</div>
-            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter underline">TIENDA INGLESA</div>
+            <div class="mx-16 text-3xl font-black text-slate-200 uppercase tracking-tighter italic italic">CONAPROLE</div>
         </div>
     </div>
 
     <!-- SENSORS MARQUEE -->
     <section id="marquesina-sensores" class="py-40 overflow-hidden marquee-container">
         <div class="max-w-7xl mx-auto px-8 mb-20">
-            <h2 class="text-5xl font-extrabold tracking-tighter uppercase mb-4">Ecosistema de Dispositivos</h2>
+            <h2 class="text-5xl font-extrabold tracking-tighter uppercase mb-4 italic">Ecosistema de Dispositivos</h2>
             <div class="w-24 h-1 bg-blue-600"></div>
         </div>
         <div class="marquee-sensor-wrapper">
@@ -140,25 +130,24 @@
             </div>
             <div class="ui-sensor-card">
                 <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 2">
-                <h5 class="text-xl font-bold mb-2 uppercase">DOOR SENSE NODE</h5>
+                <h5 class="text-xl font-bold mb-2 uppercase italic">DOOR SENSE NODE</h5>
                 <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Magnetic Access</p>
             </div>
             <div class="ui-sensor-card">
                 <img src="https://images.unsplash.com/photo-1519219788971-8d9797e0928e?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 3">
-                <h5 class="text-xl font-bold mb-2 uppercase">POWER GRID GUARD</h5>
+                <h5 class="text-xl font-bold mb-2 uppercase italic italic">POWER GRID GUARD</h5>
                 <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Energy Integrity</p>
             </div>
-            <!-- Duplicate -->
+            <!-- Duplicates -->
             <div class="ui-sensor-card">
                 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 1">
                 <h5 class="text-xl font-bold mb-2 uppercase">CS-PRO TEMPERATURE</h5>
-                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Ultra Precision</p>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="contacto" class="py-32 px-8 text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.5em] italic border-t border-slate-100">
+    <footer id="contacto" class="py-20 px-8 text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.5em] italic border-t border-slate-100">
         © 2026 COLD SENSE. MONTEVIDEO.
     </footer>
 
