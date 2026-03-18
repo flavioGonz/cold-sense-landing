@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Sense | Monitoreo Inteligente de Frío</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .card-blur {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white font-sans">
+
+    <!-- Navbar -->
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="text-2xl font-bold tracking-tighter flex items-center">
+            <span class="text-blue-400 mr-2"><i class="fas fa-snowflake"></i></span>
+            COLD<span class="text-blue-500">SENSE</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+            <a href="#soluciones" class="hover:text-white transition">Soluciones</a>
+            <a href="#tecnologia" class="hover:text-white transition">Tecnología</a>
+            <a href="#precios" class="hover:text-white transition">Precios</a>
+        </div>
+        <a href="https://wa.me/59899185402" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full text-sm font-bold transition">
+            Hablar con un experto
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+            Control total de tu <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">cadena de frío.</span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+            Monitoreo en tiempo real con sensores IoT de bajo costo. Evita pérdidas, cumple normativas y duerme tranquilo.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+            <div class="p-4 card-blur rounded-2xl flex items-center">
+                <span class="bg-blue-500/20 p-3 rounded-xl mr-4 text-blue-400">
+                    <i class="fas fa-bolt text-xl"></i>
+                </span>
+                <div class="text-left">
+                    <p class="text-xs text-slate-500 uppercase font-bold tracking-widest">Tiempo Real</p>
+                    <p class="font-semibold italic">Dashboards vivos</p>
+                </div>
+            </div>
+            <div class="p-4 card-blur rounded-2xl flex items-center">
+                <span class="bg-green-500/20 p-3 rounded-xl mr-4 text-green-400">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </span>
+                <div class="text-left">
+                    <p class="text-xs text-slate-500 uppercase font-bold tracking-widest">Alertas</p>
+                    <p class="font-semibold italic">Notificaciones directas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluciones -->
+    <section id="soluciones" class="bg-slate-800/50 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center italic">Escalamos con tu negocio</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Lite -->
+                <div class="p-8 card-blur rounded-3xl border-l-4 border-blue-500">
+                    <h3 class="text-2xl font-bold mb-4">Plan Lite <span class="text-sm font-normal text-slate-400">(Carnicerías & Locales)</span></h3>
+                    <ul class="space-y-4 text-slate-300 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3"></i> Conexión directa ESP32 al Cloud</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3"></i> Monitoreo desde el móvil</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3"></i> Alertas de temperatura crítica</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3"></i> Sin servidores locales</li>
+                    </ul>
+                    <p class="text-blue-400 font-bold tracking-tight">Ideal para 1 a 5 sensores.</p>
+                </div>
+                <!-- Enterprise -->
+                <div class="p-8 card-blur rounded-3xl border-l-4 border-cyan-500">
+                    <h3 class="text-2xl font-bold mb-4">Plan Enterprise <span class="text-sm font-normal text-slate-400">(Cadenas & Frigoríficos)</span></h3>
+                    <ul class="space-y-4 text-slate-300 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-3"></i> Gateway Local (Raspberry Pi)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-3"></i> Almacenamiento offline (Edge Computing)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-3"></i> Dashboard centralizado multimarca</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyan-500 mr-3"></i> Soporte para cientos de puntos</li>
+                    </ul>
+                    <p class="text-cyan-400 font-bold tracking-tight">Alta disponibilidad garantizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tecnologia" class="py-20 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4 italic uppercase tracking-tighter">Hardware Propio</h2>
+            <p class="text-slate-400">Diseñamos el cerebro de tu frío.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="p-6">
+                <div class="text-4xl text-blue-400 mb-4"><i class="fas fa-microchip"></i></div>
+                <h4 class="font-bold">ESP32</h4>
+                <p class="text-xs text-slate-500 mt-2 italic">Firmware Custom</p>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl text-blue-400 mb-4"><i class="fas fa-server"></i></div>
+                <h4 class="font-bold">MQTT</h4>
+                <p class="text-xs text-slate-500 mt-2 italic">Protocolo Industrial</p>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl text-blue-400 mb-4"><i class="fab fa-raspberry-pi"></i></div>
+                <h4 class="font-bold">Raspberry Pi</h4>
+                <p class="text-xs text-slate-500 mt-2 italic">Edge Computing</p>
+            </div>
+            <div class="p-6">
+                <div class="text-4xl text-blue-400 mb-4"><i class="fas fa-database"></i></div>
+                <h4 class="font-bold">PostgreSQL</h4>
+                <p class="text-xs text-slate-500 mt-2 italic">Big Data Ready</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-10 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>© 2026 Cold Sense - Una división de Infratec / Inflexium.</p>
+        <p class="mt-2 uppercase tracking-widest font-bold text-blue-500/50">Uruguay - Latam</p>
+    </footer>
+
+</body>
+</html>
