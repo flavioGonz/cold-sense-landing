@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Sense | Ecosistema de Monitoreo Industrial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --ui-blue: #0055ff; --ui-bg: #ffffff; --ui-text: #1d1d1f; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--ui-bg); color: var(--ui-text); -webkit-font-smoothing: antialiased; }
+        .ui-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid #eee; }
+        .btn-ui { padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 13px; transition: all 0.2s ease; display: inline-block; }
+        .btn-blue { background: var(--ui-blue); color: white; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- NAV BAR -->
+    <nav class="fixed top-0 w-full z-50 ui-nav h-16 flex items-center px-8">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center space-x-12">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-6 h-6 bg-blue-600 rounded-sm flex items-center justify-center text-[10px] text-white font-bold tracking-tighter uppercase">CS</div>
+                    <span class="text-sm font-bold tracking-tight text-black uppercase">COLD SENSE</span>
+                </a>
+                <div class="hidden lg:flex space-x-10 text-[11px] font-bold text-slate-500 uppercase tracking-widest">
+                    <a href="sistema.html" class="text-blue-600">Sistema</a>
+                    <a href="sensores.html" class="hover:text-black transition">Sensores</a>
+                    <a href="software.html" class="hover:text-black transition">Software</a>
+                    <a href="pricing.html" class="hover:text-black transition">Precios</a>
+                </div>
+            </div>
+            <a href="https://wa.me/59899185402" class="btn-ui btn-blue">DEMO</a>
+        </div>
+    </nav>
+
+    <!-- HERO SISTEMA -->
+    <section class="pt-40 pb-20 px-8 max-w-7xl mx-auto">
+        <div class="mb-20 text-center lg:text-left">
+            <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Ecosistema Industrial</span>
+            <h1 class="text-6xl font-black tracking-tighter mb-8 leading-[0.9]">Infraestructura <br> de Grado Crítico.</h1>
+            <p class="text-xl text-slate-400 max-w-2xl font-light">Diseñamos cada componente para garantizar el monitoreo absoluto de tu cadena de frío.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1551288049-bbda38a10ad5?auto=format&fit=crop&q=80&w=2070" class="rounded-[40px] shadow-2xl" alt="Sistema IoT">
+            </div>
+            <div class="space-y-12">
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-blue-600 border border-slate-100"><i class="fas fa-microchip text-2xl"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tight">Nodos ESP32</h3>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed italic">Procesamiento distribuido en cada cámara. Firmware propietario para máxima estabilidad.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-red-600 border border-slate-100"><i class="fab fa-raspberry-pi text-2xl"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tight">Gateways Edge</h3>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed italic">Servidores locales que blindan la información ante cortes de internet. Almacenamiento redundante.</p>
+                    </div>
+                </div>
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-green-600 border border-slate-100"><i class="fas fa-shield-alt text-2xl"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 uppercase tracking-tight">Seguridad AES</h3>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed italic">Toda la comunicación MQTT viaja bajo túneles encriptados, asegurando la integridad de tus datos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 px-8 text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.5em] italic border-t border-slate-100">
+        © 2026 COLD SENSE. MONTEVIDEO.
+    </footer>
+
+</body>
+</html>

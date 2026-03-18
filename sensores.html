@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cold Sense | Catálogo de Sensores IoT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --ui-blue: #0055ff; --ui-bg: #ffffff; --ui-text: #1d1d1f; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--ui-bg); color: var(--ui-text); -webkit-font-smoothing: antialiased; }
+        .ui-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid #eee; }
+        .btn-ui { padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 13px; transition: all 0.2s ease; display: inline-block; }
+        .btn-blue { background: var(--ui-blue); color: white; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- NAV BAR -->
+    <nav class="fixed top-0 w-full z-50 ui-nav h-16 flex items-center px-8">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center space-x-12">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-6 h-6 bg-blue-600 rounded-sm flex items-center justify-center text-[10px] text-white font-bold tracking-tighter uppercase">CS</div>
+                    <span class="text-sm font-bold tracking-tight text-black uppercase">COLD SENSE</span>
+                </a>
+                <div class="hidden lg:flex space-x-10 text-[11px] font-bold text-slate-500 uppercase tracking-widest">
+                    <a href="sistema.html" class="hover:text-black transition">Sistema</a>
+                    <a href="sensores.html" class="text-blue-600">Sensores</a>
+                    <a href="software.html" class="hover:text-black transition">Software</a>
+                    <a href="pricing.html" class="hover:text-black transition">Precios</a>
+                </div>
+            </div>
+            <a href="https://wa.me/59899185402" class="btn-ui btn-blue">DEMO</a>
+        </div>
+    </nav>
+
+    <!-- HERO SENSORES -->
+    <section class="pt-40 pb-20 px-8 max-w-7xl mx-auto">
+        <div class="mb-20 text-center lg:text-left">
+            <span class="text-blue-600 font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Hardware IoT</span>
+            <h1 class="text-6xl font-black tracking-tighter mb-8 leading-[0.9]">Sensores <br> de Alta Precisión.</h1>
+            <p class="text-xl text-slate-400 max-w-2xl font-light italic">Diseñamos dispositivos para entornos extremos, con materiales de grado alimenticio e impresión 3D de alta densidad.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-12">
+            <div class="p-10 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col items-center text-center">
+                <i class="fas fa-thermometer-half text-5xl text-blue-600 mb-8"></i>
+                <h3 class="text-xl font-bold mb-4 uppercase">CS-PRO Temperature</h3>
+                <p class="text-sm text-slate-500 font-light italic">Precisión de ±0.1°C de -50°C a +120°C. Sonda blindada contra humedad.</p>
+            </div>
+            <div class="p-10 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col items-center text-center">
+                <i class="fas fa-door-open text-5xl text-red-600 mb-8"></i>
+                <h3 class="text-xl font-bold mb-4 uppercase">Door Sense Node</h3>
+                <p class="text-sm text-slate-500 font-light italic">Sensor magnético de apertura instantánea. Alertas inmediatas de puertas abiertas.</p>
+            </div>
+            <div class="p-10 bg-slate-50 rounded-[40px] border border-slate-100 flex flex-col items-center text-center">
+                <i class="fas fa-plug text-5xl text-green-600 mb-8"></i>
+                <h3 class="text-xl font-bold mb-4 uppercase">Power Grid Guard</h3>
+                <p class="text-sm text-slate-500 font-light italic">Monitor de flujo eléctrico. Detección de cortes de suministro en tiempo récord.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 px-8 text-center text-[10px] font-bold text-slate-300 uppercase tracking-[0.5em] italic border-t border-slate-100">
+        © 2026 COLD SENSE. MONTEVIDEO.
+    </footer>
+
+</body>
+</html>
