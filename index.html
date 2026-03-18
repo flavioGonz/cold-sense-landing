@@ -21,34 +21,27 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: white; overflow-x: hidden; }
         .font-syne { font-family: 'Syne', sans-serif; }
         .glass-card { background: rgba(13, 17, 23, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
-        .glass-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .hardware-img { width: 100%; height: 200px; object-fit: cover; border-radius: 1.5rem; margin-bottom: 1.5rem; opacity: 0.8; }
         
-        /* Intro Loader */
-        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .loader-bar { width: 0%; height: 2px; background: var(--primary); box-shadow: 0 0 15px var(--primary); }
-
-        /* Carousel Styles */
-        .swiper-slide { padding: 1rem; }
-
-        /* CTA Section Redesign */
-        .cta-industrial { background: linear-gradient(to right, #0d1117, #1e293b); border-radius: 3rem; position: relative; overflow: hidden; }
-        .cta-industrial::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 50%); }
+        /* Video Background Section */
+        .video-container { position: relative; width: 100%; height: 80vh; overflow: hidden; border-radius: 3rem; margin: 4rem 0; }
+        .video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; opacity: 0.3; }
+        .video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5, 7, 10, 0.9), transparent, rgba(5, 7, 10, 0.9)); z-index: 1; }
+        
+        /* Floating HUD Mockup */
+        .hud-element { position: absolute; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); backdrop-filter: blur(5px); padding: 1.5rem; border-radius: 1rem; z-index: 2; font-family: monospace; }
+        .hud-1 { top: 20%; left: 10%; }
+        .hud-2 { bottom: 20%; right: 10%; }
+        
+        /* Pulse Animation */
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 70% { box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
+        .pulse { animation: pulse-glow 2s infinite; }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
     </style>
 </head>
-<body>
-
-    <!-- INTRO LOADER -->
-    <div id="loader">
-        <h2 class="text-4xl font-syne font-extrabold tracking-tighter loader-text mb-8">COLD SENSE IoT</h2>
-        <div class="w-64 h-0.5 bg-slate-800 rounded-full overflow-hidden">
-            <div class="loader-bar"></div>
-        </div>
-    </div>
+<body class="bg-slate-950">
 
     <!-- NAVIGATION -->
     <header class="fixed top-0 w-full z-50 p-6" id="navbar">
@@ -59,100 +52,104 @@
             </div>
             <div class="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 <a href="#home" class="hover:text-white transition">Inicio</a>
-                <a href="#hardware" class="hover:text-white transition">Hardware</a>
-                <a href="#sensores" class="hover:text-white transition">Sensores</a>
+                <a href="#ecosistema" class="hover:text-white transition">Ecosistema</a>
+                <a href="#showcase" class="hover:text-white transition">Showcase</a>
                 <a href="#contacto" class="hover:text-white transition">Contacto</a>
             </div>
-            <a href="https://wa.me/59899185402" class="bg-blue-600 hover:bg-blue-500 px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest">Start Demo</a>
+            <a href="https://wa.me/59899185402" class="bg-blue-600 hover:bg-blue-500 px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all">Start Demo</a>
         </nav>
     </header>
 
     <!-- HERO -->
-    <section id="home" class="min-h-screen flex items-center pt-24 px-6 overflow-hidden bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-slate-950/90 z-0"></div>
+    <section id="home" class="min-h-screen flex items-center pt-24 px-6 relative overflow-hidden">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
             <div>
-                <span class="text-blue-500 font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Industrial Grade Monitoring</span>
+                <span class="text-blue-500 font-bold text-xs uppercase tracking-[0.3em] mb-4 block">Engineered in Uruguay</span>
                 <h1 class="text-7xl lg:text-9xl font-syne font-extrabold leading-[0.85] tracking-tighter mb-8">
-                    Absolute <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Cold Sense.</span>
+                    Smart Cold <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Resilience.</span>
                 </h1>
-                <p class="text-lg text-slate-400 font-light max-w-lg mb-12">Monitoreo crítico IoT diseñado en Uruguay para condiciones extremas. Precisión quirúrgica en cada dato.</p>
+                <p class="text-lg text-slate-400 font-light max-w-lg mb-12">Monitoreo crítico IoT de alta densidad. Infraestructura resiliente para el mundo real.</p>
                 <div class="flex gap-6">
-                    <a href="#sensores" class="bg-white text-black px-10 py-5 rounded-2xl font-bold hover:bg-blue-50 transition">Ver Sensores</a>
-                    <a href="https://wa.me/59899185402" class="border border-white/20 px-10 py-5 rounded-2xl font-bold hover:bg-white/5 transition">Demo WhatsApp</a>
+                    <a href="#showcase" class="bg-white text-black px-10 py-5 rounded-2xl font-bold hover:bg-blue-50 transition">Ver Showcase</a>
+                    <a href="https://wa.me/59899185402" class="border border-white/20 px-10 py-5 rounded-2xl font-bold hover:bg-white/5 transition">WhatsApp Enlace</a>
                 </div>
             </div>
             <div class="hidden lg:block">
-                <div class="glass-card p-4 rounded-[3rem] rotate-3 float-anim">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070" class="rounded-[2rem] w-full shadow-2xl shadow-blue-500/10" alt="ESP32 IoT Plaque">
-                    <div class="p-6 text-center">
-                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-1 italic">Realtime Data Engine</p>
-                        <p class="text-sm font-light text-slate-400">Nuestro cerebro ESP32 procesando señales a baja latencia.</p>
-                    </div>
+                <div class="glass-card p-10 rounded-[3rem] rotate-3 relative overflow-hidden flex flex-col items-center justify-center">
+                    <i class="fas fa-microchip text-9xl text-blue-500/10 mb-8 animate-pulse"></i>
+                    <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-500 mb-2 italic">Architecture v5.0</p>
+                    <h3 class="text-2xl font-syne font-bold">IoT Ecosystem</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- HARDWARE -->
-    <section id="hardware" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto mb-20">
-            <h2 class="text-5xl font-syne font-bold mb-4">Ingeniería IoT</h2>
-            <p class="text-slate-500 italic">Desarrollamos soluciones integrales desde el chip hasta la nube.</p>
-        </div>
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10">
-            <div class="glass-card p-10 rounded-3xl">
-                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=1000" class="hardware-img" alt="Microchip">
-                <h4 class="text-2xl font-bold mb-4 uppercase">El Cerebro (ESP32)</h4>
-                <p class="text-sm text-slate-400 leading-relaxed font-light">Firmware optimizado para protocolos MQTT con encriptación TLS y gestión inteligente de energía.</p>
+    <!-- VIDEO SHOWCASE SECTION -->
+    <section id="showcase" class="px-6">
+        <div class="max-w-7xl mx-auto video-container shadow-2xl border border-white/5">
+            <video autoplay muted loop playsinline class="video-bg">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-microchips-and-electronic-components-43340-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+            
+            <!-- HUD Interactive Mockups -->
+            <div class="hud-element hud-1 float-anim shadow-xl">
+                <div class="text-[10px] text-blue-500 font-bold mb-2">LIVE_TELEMETRY: [NODE_01]</div>
+                <div class="text-2xl font-bold text-white">-24.5°C</div>
+                <div class="text-[10px] text-slate-500 mt-1 uppercase">Humedad: 42% | Status: OK</div>
+                <div class="w-full h-1 bg-blue-500/20 rounded-full mt-4 overflow-hidden">
+                    <div class="w-3/4 h-full bg-blue-500 pulse"></div>
+                </div>
             </div>
-            <div class="glass-card p-10 rounded-3xl">
-                <img src="https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&q=80&w=1000" class="hardware-img" alt="Raspberry Pi">
-                <h4 class="text-2xl font-bold mb-4 uppercase">El Gateway (RPi)</h4>
-                <p class="text-sm text-slate-400 leading-relaxed font-light">Servidor local capaz de gestionar cientos de sensores sin depender de la nube externa las 24hs.</p>
+
+            <div class="hud-element hud-2 float-anim-reverse shadow-xl">
+                <div class="text-[10px] text-cyan-500 font-bold mb-2">GATEWAY: [RASPBERRY_PI]</div>
+                <div class="text-sm font-bold text-white uppercase">Sincronizando...</div>
+                <div class="text-[10px] text-slate-500 mt-1 uppercase italic">MQTT Packets: 1024/s</div>
+                <div class="flex gap-1 mt-4">
+                    <div class="w-1 h-4 bg-cyan-500/50"></div>
+                    <div class="w-1 h-2 bg-cyan-500/50 mt-auto"></div>
+                    <div class="w-1 h-6 bg-cyan-500"></div>
+                    <div class="w-1 h-3 bg-cyan-500/50 mt-auto"></div>
+                </div>
             </div>
-            <div class="glass-card p-10 rounded-3xl">
-                <img src="https://images.unsplash.com/photo-1581093583449-80d601dfdf0e?auto=format&fit=crop&q=80&w=1000" class="hardware-img" alt="3D Printing">
-                <h4 class="text-2xl font-bold mb-4 uppercase">Custom 3D Cases</h4>
-                <p class="text-sm text-slate-400 leading-relaxed font-light">Impresión en resina de alta densidad y grado alimenticio para encaje perfecto en rieles de frío.</p>
+
+            <div class="absolute inset-0 flex items-center justify-center z-10 text-center px-6">
+                <div class="max-w-2xl">
+                    <h3 class="text-5xl md:text-7xl font-syne font-extrabold mb-8">El núcleo <br> de tu frío.</h3>
+                    <p class="text-lg text-slate-300 font-light">Mira cómo fluyen tus datos en tiempo real a través de nuestra infraestructura IoT.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SENSORES CAROUSEL -->
-    <section id="sensores" class="py-32 px-6 bg-slate-900/20">
+    <!-- CAROUSEL DE SENSORES -->
+    <section class="py-32 px-6">
         <div class="max-w-7xl mx-auto mb-20 text-center">
-            <h2 class="text-5xl font-syne font-bold mb-4 tracking-tighter">Ecosistema de Sensores</h2>
-            <p class="text-slate-500">Un dispositivo para cada necesidad crítica de tu empresa.</p>
+            <h2 class="text-5xl font-syne font-bold mb-4 tracking-tighter uppercase">Ecosistema de Dispositivos</h2>
+            <div class="w-32 h-1 bg-blue-600 mx-auto"></div>
         </div>
         <div class="swiper mySwiper max-w-7xl mx-auto">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="glass-card p-10 rounded-3xl text-center">
-                        <i class="fas fa-thermometer-half text-5xl text-blue-500 mb-6"></i>
-                        <h5 class="text-xl font-bold mb-2 uppercase">Temperatura</h5>
-                        <p class="text-xs text-slate-500">Precisión de ±0.1°C de -50°C a +120°C.</p>
+            <div class="swiper-wrapper text-center">
+                <div class="swiper-slide p-6">
+                    <div class="glass-card p-12 rounded-[2.5rem]">
+                        <i class="fas fa-thermometer-half text-5xl text-blue-500 mb-8"></i>
+                        <h4 class="text-2xl font-bold mb-4">TEMPERATURA</h4>
+                        <p class="text-sm text-slate-500 font-light">Monitorización estable de -50°C a +120°C con precisión médica.</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="glass-card p-10 rounded-3xl text-center">
-                        <i class="fas fa-droplet text-5xl text-cyan-500 mb-6"></i>
-                        <h5 class="text-xl font-bold mb-2 uppercase">Humedad</h5>
-                        <p class="text-xs text-slate-500">Monitoreo de ambientes secos y húmedos.</p>
+                <div class="swiper-slide p-6">
+                    <div class="glass-card p-12 rounded-[2.5rem]">
+                        <i class="fas fa-door-open text-5xl text-cyan-500 mb-8"></i>
+                        <h4 class="text-2xl font-bold mb-4">PUERTAS</h4>
+                        <p class="text-sm text-slate-500 font-light">Sensores magnéticos de apertura con alertas por WhatsApp inmediatas.</p>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="glass-card p-10 rounded-3xl text-center">
-                        <i class="fas fa-door-open text-5xl text-green-500 mb-6"></i>
-                        <h5 class="text-xl font-bold mb-2 uppercase">Apertura</h5>
-                        <p class="text-xs text-slate-500">Alertas instantáneas de puertas abiertas.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="glass-card p-10 rounded-3xl text-center">
-                        <i class="fas fa-plug text-5xl text-yellow-500 mb-6"></i>
-                        <h5 class="text-xl font-bold mb-2 uppercase">Energía</h5>
-                        <p class="text-xs text-slate-500">Detección de cortes eléctricos locales.</p>
+                <div class="swiper-slide p-6">
+                    <div class="glass-card p-12 rounded-[2.5rem]">
+                        <i class="fas fa-plug text-5xl text-yellow-500 mb-8"></i>
+                        <h4 class="text-2xl font-bold mb-4">ENERGÍA</h4>
+                        <p class="text-sm text-slate-500 font-light">Detección de cortes de suministro eléctrico en tiempo récord.</p>
                     </div>
                 </div>
             </div>
@@ -160,45 +157,30 @@
         </div>
     </section>
 
-    <!-- NEW CTA SECTION -->
-    <section id="contacto" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto cta-industrial p-16 md:p-24 text-center">
+    <!-- CTA SECTION -->
+    <section id="contacto" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto bg-gradient-to-r from-slate-900 to-blue-900 rounded-[3rem] p-16 md:p-24 text-center relative overflow-hidden border border-white/5">
             <div class="relative z-10">
-                <h2 class="text-5xl md:text-7xl font-syne font-extrabold mb-8 italic tracking-tighter">
-                    Escalamos tu <br><span class="text-blue-500">Seguridad Industrial.</span>
-                </h2>
-                <p class="text-xl text-slate-400 mb-12 max-w-xl mx-auto font-light leading-relaxed">
-                    Únete a la nueva era del monitoreo resiliente. Desde pequeñas carnicerías hasta grandes centros de distribución.
-                </p>
+                <h2 class="text-5xl md:text-7xl font-syne font-extrabold mb-10 italic tracking-tighter">Escalamos con <br>tu negocio.</h2>
                 <div class="flex flex-col md:flex-row justify-center gap-6">
-                    <a href="https://wa.me/59899185402" class="bg-blue-600 hover:bg-blue-500 text-white px-12 py-5 rounded-2xl font-bold text-xl transition-all shadow-2xl shadow-blue-500/20">
-                        Hablar con un Experto
-                    </a>
-                    <a href="#home" class="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-12 py-5 rounded-2xl font-bold text-xl transition-all">
-                        Ver Tecnología
-                    </a>
+                    <a href="https://wa.me/59899185402" class="bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-2xl transition-all">Hablar con Enlace</a>
+                    <a href="#home" class="bg-white/5 border border-white/10 px-10 py-5 rounded-2xl font-bold text-xl transition-all">Ver Ecosistema</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-20 px-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] italic">
-        <p>© 2026 Cold Sense. Infratec & Inflexium.</p>
-        <p>Uruguay - Latam</p>
+    <footer class="py-20 px-6 border-t border-white/5 text-center text-slate-500 text-[10px] font-bold uppercase tracking-[0.4em] italic">
+        <p>© 2026 Cold Sense. Infratec Ecosystem Uruguay.</p>
     </footer>
 
     <script>
-        // Swiper Init
-        new Swiper(".mySwiper", {
-            slidesPerView: 1, spaceBetween: 30, pagination: { el: ".swiper-pagination", clickable: true },
-            breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-        });
-
-        // GSAP Timeline & Animations
-        const tl = gsap.timeline();
-        tl.to(".loader-bar", { width: "100%", duration: 1.5, ease: "power4.inOut" });
-        tl.to("#loader", { y: "-100%", duration: 1, ease: "expo.inOut" });
-        tl.from(".hero-text > *", { opacity: 0, x: -50, duration: 1, stagger: 0.1, ease: "power4.out" }, "-=0.5");
+        // Swiper
+        new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 30, pagination: { el: ".swiper-pagination", clickable: true }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
+        
+        // Animations
+        gsap.to(".hud-1", { y: -20, duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" });
+        gsap.to(".hud-2", { y: 20, duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut" });
     </script>
 </body>
 </html>
