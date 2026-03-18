@@ -5,43 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cold Sense | Industrial Monitoring Ecosystem</title>
     
-    <!-- Apple-Like Typography (Inter is the closest web-safe to San Francisco) -->
+    <!-- Apple-Style Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-    
-    <!-- GSAP for Professional Smoothness -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Swiper for Carousel -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root { --primary: #ffffff; --accent: #2563eb; --bg: #000000; --text-muted: #86868b; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--bg); color: var(--primary); -webkit-font-smoothing: antialiased; }
+        :root { --primary: #ffffff; --accent: #0071e3; --bg: #000000; --text-muted: #86868b; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background-color: var(--bg); color: var(--primary); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
-        .hero-title { font-weight: 900; letter-spacing: -0.05em; line-height: 0.95; font-size: 5.5rem; }
-        @media (max-width: 768px) { .hero-title { font-size: 3.5rem; } }
+        /* Marquesina Animation */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-wrapper { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+        .marquee-sensor-wrapper { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+        .marquee-container:hover .marquee-wrapper, .marquee-container:hover .marquee-sensor-wrapper { animation-play-state: paused; }
 
-        .glass-panel { background: rgba(22, 22, 23, 0.8); backdrop-filter: saturate(180%) blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; transition: all 0.4s cubic-bezier(0.2, 1, 0.2, 1); }
-        .glass-panel:hover { background: rgba(30, 30, 31, 0.9); border-color: rgba(255,255,255,0.2); }
+        .glass-panel { background: rgba(22, 22, 23, 0.8); backdrop-filter: saturate(180%) blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; transition: all 0.4s ease; }
+        .glass-panel:hover { border-color: rgba(255,255,255,0.2); }
 
-        /* Video / Showcase Background */
-        .showcase-bg { position: absolute; inset: 0; opacity: 0.25; mix-blend-mode: screen; pointer-events: none; }
-        .video-overlay { background: radial-gradient(circle at 50% 50%, transparent 20%, #000 80%); }
+        .btn-apple { padding: 12px 28px; border-radius: 980px; font-weight: 600; font-size: 14px; transition: all 0.2s ease; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #0077ed; transform: scale(1.02); }
 
-        /* HUD elements refined */
-        .hud-stat { font-family: 'Inter', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
-
-        /* Button Apple Style */
-        .btn-apple { padding: 12px 24px; border-radius: 980px; font-weight: 600; font-size: 14px; transition: all 0.2s ease; }
-        .btn-primary { background: #0071e3; color: white; }
-        .btn-primary:hover { background: #0077ed; }
-        .btn-secondary { color: #2997ff; }
-        .btn-secondary:hover { text-decoration: underline; }
+        .sensor-card { width: 350px; margin: 0 15px; flex-shrink: 0; padding: 40px; border-radius: 30px; background: #161617; text-align: center; }
+        .sensor-img { width: 100%; height: 200px; object-fit: cover; border-radius: 20px; margin-bottom: 25px; opacity: 0.7; }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 5px; }
@@ -50,130 +39,125 @@
 </head>
 <body>
 
-    <!-- NAV BAR -->
-    <nav class="fixed top-0 w-full z-50 p-4">
-        <div class="max-w-6xl mx-auto glass-panel px-6 py-3 flex justify-between items-center shadow-2xl">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-snowflake text-white"></i>
-                <span class="text-sm font-bold uppercase tracking-widest">COLD SENSE</span>
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 p-6">
+        <div class="max-w-6xl mx-auto glass-panel px-8 py-4 flex justify-between items-center shadow-2xl">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i class="fas fa-snowflake text-white text-xs"></i></div>
+                <span class="text-xs font-black uppercase tracking-[0.2em]">COLD SENSE</span>
             </div>
-            <div class="hidden md:flex space-x-10 text-[11px] font-semibold text-[#f5f5f7] uppercase tracking-wider">
-                <a href="#ecosistema" class="hover:text-white transition">Ecosistema</a>
+            <div class="hidden md:flex space-x-12 text-[10px] font-bold text-[#86868b] uppercase tracking-widest">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#marquesina-sensores" class="hover:text-white transition">Sensores</a>
                 <a href="#hardware" class="hover:text-white transition">Hardware</a>
-                <a href="#contacto" class="hover:text-white transition">Soporte</a>
             </div>
-            <a href="https://wa.me/59899185402" class="btn-apple btn-primary">DEMO</a>
+            <a href="https://wa.me/59899185402" class="btn-apple btn-primary">COTIZAR</a>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
     <section id="home" class="min-h-screen flex items-center justify-center text-center px-6 pt-20">
         <div class="max-w-5xl">
-            <div class="mb-6 inline-block text-[11px] font-bold tracking-[0.3em] text-[#86868b] uppercase border border-white/10 px-4 py-1.5 rounded-full">
-                Industrial Grade Ecosystem
+            <div class="mb-8 inline-block text-[11px] font-bold tracking-[0.4em] text-[#86868b] uppercase border border-white/5 px-6 py-2 rounded-full">
+                Professional Grade IoT
             </div>
-            <h1 class="hero-title mb-10">
+            <h1 class="text-7xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.95]">
                 Absolute Monitoring.<br>
-                <span class="text-[#86868b]">Zero Loss Resilience.</span>
+                <span class="text-[#86868b]">Industrial Resilience.</span>
             </h1>
-            <p class="text-xl md:text-2xl font-light text-[#a1a1a6] max-w-3xl mx-auto mb-12 leading-relaxed">
-                Infraestructura IoT de alta densidad para el monitoreo crítico de temperatura. Ingeniería uruguaya diseñada para entornos industriales de máxima exigencia.
+            <p class="text-xl md:text-2xl font-light text-[#a1a1a6] max-w-3xl mx-auto mb-16 leading-relaxed">
+                Ecosistema de monitoreo crítico de temperatura diseñado para infraestructuras de alto rendimiento.
             </p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                <a href="https://wa.me/59899185402" class="btn-apple btn-primary text-lg px-12 py-5">Contratar ahora</a>
-                <a href="#ecosistema" class="btn-apple btn-secondary text-lg flex items-center">Explorar tecnología <i class="fas fa-chevron-right ml-2 text-sm"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CINEMATIC SHOWCASE -->
-    <section id="ecosistema" class="py-20 px-6 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto h-[70vh] glass-panel relative overflow-hidden">
-            <video autoplay muted loop playsinline class="showcase-bg object-cover w-full h-full">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-microchips-and-electronic-components-43340-large.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 video-overlay"></div>
-            
-            <!-- HUD Interactive Labels -->
-            <div class="absolute top-12 left-12 hud-stat">
-                <div class="text-white font-bold mb-1">NODE_01_TELEMETRY</div>
-                <div class="text-lg font-light text-blue-500">-24.4°C</div>
-            </div>
-            
-            <div class="absolute bottom-12 right-12 text-right hud-stat">
-                <div class="text-white font-bold mb-1">GATEWAY_STATUS</div>
-                <div class="text-lg font-light text-green-500">SYNC_OK</div>
-            </div>
-
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                <h3 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Ecosistema Unificado.</h3>
-                <p class="text-[#a1a1a6] text-lg font-light max-w-xl">Desde un sensor único hasta miles de puntos sincronizados en tiempo real a través de nuestra red propietaria MQTT.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- HARDWARE SECTION -->
-    <section id="hardware" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-16">
-            <div class="text-center md:text-left">
-                <div class="text-3xl text-blue-500 mb-6"><i class="fas fa-microchip"></i></div>
-                <h4 class="text-xl font-bold mb-4">Cerebro Distribuido</h4>
-                <p class="text-[#86868b] font-light leading-relaxed">Nuestros nodos basados en ESP32 operan de forma autónoma, garantizando lecturas precisas cada 5 segundos.</p>
-            </div>
-            <div class="text-center md:text-left">
-                <div class="text-3xl text-blue-500 mb-6"><i class="fab fa-raspberry-pi"></i></div>
-                <h4 class="text-xl font-bold mb-4">Edge Processing</h4>
-                <p class="text-[#86868b] font-light leading-relaxed">La Raspberry Pi Gateway almacena y procesa datos localmente, blindando tu información ante caídas de internet.</p>
-            </div>
-            <div class="text-center md:text-left">
-                <div class="text-3xl text-blue-500 mb-6"><i class="fas fa-cubes"></i></div>
-                <h4 class="text-xl font-bold mb-4">Diseño a Medida</h4>
-                <p class="text-[#86868b] font-light leading-relaxed">Carcasas de grado industrial impresas en 3D bajo demanda para una integración perfecta en cualquier entorno.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CAROUSEL DE DISPOSITIVOS -->
-    <section class="py-32 bg-[#161617] rounded-[40px] mx-6 mb-20">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide text-center p-10">
-                        <i class="fas fa-thermometer-half text-3xl mb-6"></i>
-                        <h5 class="text-lg font-bold mb-2">Sensor Temperatura</h5>
-                        <p class="text-sm text-[#86868b]">Alta precisión para ambientes criogénicos.</p>
-                    </div>
-                    <div class="swiper-slide text-center p-10">
-                        <i class="fas fa-door-open text-3xl mb-6"></i>
-                        <h5 class="text-lg font-bold mb-2">Detector Apertura</h5>
-                        <p class="text-sm text-[#86868b]">Control absoluto sobre accesos de frío.</p>
-                    </div>
-                    <div class="swiper-slide text-center p-10">
-                        <i class="fas fa-plug text-3xl mb-6"></i>
-                        <h5 class="text-lg font-bold mb-2">Monitor Energía</h5>
-                        <p class="text-sm text-[#86868b]">Prevención ante cortes de suministro.</p>
-                    </div>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+                <a href="https://wa.me/59899185402" class="btn-apple btn-primary text-lg px-12 py-5 shadow-2xl shadow-blue-500/10">Hablar con Enlace</a>
+                <div class="flex items-center space-x-2 text-blue-500 font-semibold cursor-pointer hover:underline">
+                    <span>Ver tecnología</span>
+                    <i class="fas fa-chevron-right text-xs"></i>
                 </div>
-                <div class="swiper-pagination mt-10"></div>
             </div>
         </div>
     </section>
 
-    <!-- CTA SECTION -->
-    <section id="contacto" class="py-32 text-center">
-        <h2 class="text-5xl md:text-7xl font-bold mb-10 tracking-tight">Dile adiós a la incertidumbre.</h2>
-        <a href="https://wa.me/59899185402" class="btn-apple btn-primary text-xl px-16 py-6">Solicitar Cotización</a>
+    <!-- CLIENTS MARQUEE (Ticker) -->
+    <div class="py-20 border-y border-white/5 marquee-container">
+        <div class="marquee-wrapper">
+            <!-- Logos/Names Loop -->
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter">GRUPO DISCO</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter italic">CONAPROLE</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter underline">TIENDA INGLESA</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter">F. MODELO</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter">FRIGORIFICO TUCUAREMBO</div>
+            <!-- Duplicate for infinite loop -->
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter">GRUPO DISCO</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter italic">CONAPROLE</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter underline">TIENDA INGLESA</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter">F. MODELO</div>
+            <div class="mx-16 text-3xl font-black text-[#1d1d1f] uppercase tracking-tighter">FRIGORIFICO TUCUAREMBO</div>
+        </div>
+    </div>
+
+    <!-- SENSORS MARQUEE -->
+    <section id="marquesina-sensores" class="py-32 overflow-hidden marquee-container">
+        <div class="max-w-6xl mx-auto px-6 mb-16 text-center">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 tracking-tighter uppercase">Ecosistema de Dispositivos</h2>
+            <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+        </div>
+        <div class="marquee-sensor-wrapper">
+            <!-- Sensor Cards Loop -->
+            <div class="sensor-card glass-panel">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 1">
+                <h5 class="text-xl font-bold mb-2">CS-PRO TEMPERATURE</h5>
+                <p class="text-xs text-[#86868b] uppercase tracking-widest font-bold">Ultra Precision</p>
+            </div>
+            <div class="sensor-card glass-panel">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 2">
+                <h5 class="text-xl font-bold mb-2">DOOR SENSE NODE</h5>
+                <p class="text-xs text-[#86868b] uppercase tracking-widest font-bold">Magnetic Access</p>
+            </div>
+            <div class="sensor-card glass-panel">
+                <img src="https://images.unsplash.com/photo-1519219788971-8d9797e0928e?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 3">
+                <h5 class="text-xl font-bold mb-2">POWER GRID GUARD</h5>
+                <p class="text-xs text-[#86868b] uppercase tracking-widest font-bold">Energy Integrity</p>
+            </div>
+            <!-- Duplicate for infinite loop -->
+            <div class="sensor-card glass-panel">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 1">
+                <h5 class="text-xl font-bold mb-2">CS-PRO TEMPERATURE</h5>
+                <p class="text-xs text-[#86868b] uppercase tracking-widest font-bold">Ultra Precision</p>
+            </div>
+            <div class="sensor-card glass-panel">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" class="sensor-img" alt="Sensor 2">
+                <h5 class="text-xl font-bold mb-2">DOOR SENSE NODE</h5>
+                <p class="text-xs text-[#86868b] uppercase tracking-widest font-bold">Magnetic Access</p>
+            </div>
+        </div>
     </section>
 
-    <footer class="p-20 border-t border-white/5 text-center text-[10px] font-bold text-[#86868b] uppercase tracking-[0.3em] italic">
-        © 2026 Cold Sense. Infratec / Inflexium Ecosystem. Montevideo.
+    <!-- NEW ESCALAMOS SECTION -->
+    <section id="hardware" class="py-40 text-center px-6 bg-[#0a0a0b]">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-6xl md:text-8xl font-black mb-12 tracking-tighter leading-none italic">
+                Rediseñando la <br>
+                <span class="text-blue-600">Escala Industrial.</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-[#a1a1a6] font-light max-w-2xl mx-auto leading-relaxed mb-20">
+                Desde carnicerías locales hasta cadenas de distribución continentales. Nuestra infraestructura se adapta a tu exigencia.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center items-center">
+                <div><div class="text-3xl font-black mb-2 italic">99.9%</div><div class="text-[10px] uppercase tracking-widest text-[#86868b]">Uptime</div></div>
+                <div><div class="text-3xl font-black mb-2 italic">5s</div><div class="text-[10px] uppercase tracking-widest text-[#86868b]">Latency</div></div>
+                <div><div class="text-3xl font-black mb-2 italic">10k+</div><div class="text-[10px] uppercase tracking-widest text-[#86868b]">Nodes</div></div>
+                <div><div class="text-3xl font-black mb-2 italic">AES</div><div class="text-[10px] uppercase tracking-widest text-[#86868b]">Encryption</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="p-20 text-center text-[10px] font-bold text-[#333] uppercase tracking-[0.5em] italic">
+        © 2026 COLD SENSE. INFRASTRUCTURE & DESIGN. MONTEVIDEO.
     </footer>
 
     <script>
-        // Swiper Initialization
-        new Swiper(".mySwiper", { slidesPerView: 1, spaceBetween: 20, pagination: { el: ".swiper-pagination", clickable: true }, breakpoints: { 768: { slidesPerView: 3 } } });
-        
-        // GSAP Entrance
         gsap.from("#home > div > *", { opacity: 0, y: 30, duration: 1.2, stagger: 0.2, ease: "power3.out" });
     </script>
 </body>
